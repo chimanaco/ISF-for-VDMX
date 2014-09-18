@@ -1,4 +1,7 @@
 ISF-for-VDMX
 ============
 
-Interactive Shader Format for VDMX
+My Interactive Shader Format samples for VDMX.
+
+See:
+http://vdmx.vidvox.net/blog/isf
