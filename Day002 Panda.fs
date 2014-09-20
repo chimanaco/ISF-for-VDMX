@@ -1,5 +1,5 @@
 /*{
-	"DESCRIPTION": "1/30 Hoop",
+	"DESCRIPTION": "2/30 Panda",
 	"CREDIT": "by chimanaco",
 	"CATEGORIES": [
 		"Generators"
@@ -10,7 +10,7 @@
 			"TYPE": "float",
 			"DEFAULT": 2.0,
 			"MIN": 0.0,
-			"MAX": 30.0
+			"MAX": 1.0
 		},
 		{
 			"NAME": "frontColor",
@@ -25,6 +25,12 @@
 	]
 }*/
 
+float plasma(vec2 p)
+{
+  p *= 20.0;
+  return (sin(p.x) * cos(cycles * 5.) + 0.25) + (sin(p.y) * cos(cycles * 2.) + 0.25+sin(length(p)*2.0+cycles*3.0));
+}
+
 void main()
 {
 	// frontColor
@@ -35,15 +41,10 @@ void main()
 	float fcz = fc.z;
 	float fca = fc.a;
 
-	// position
 	vec2 p = vv_FragNormCoord;
 	p = p - 0.5;
-	p = mod(p * 8.0, 4.0)-2.0;
-	
-	// ring
-	float t = sin(length(p) * 10. + cycles);
 
-	vec3 color = vec3(t);
+	vec4 color = vec4(plasma(p));
 	float cx = color.x;
 	float cy = color.y;
 	float cz = color.z;
